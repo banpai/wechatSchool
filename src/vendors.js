@@ -1,0 +1,1 @@
+import weui from 'weui.js'
