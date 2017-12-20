@@ -1,12 +1,12 @@
 <template>
   <div class="contain">
     <div class="weui-skin_android" id="androidActionsheet" style="opacity: 1;" v-show="visible">
-      <div class="weui-mask" v-tap="{methods: tap}"></div>
+      <div class="weui-mask" @click="tap"></div>
       <div class="weui-actionsheet">
         <div class="weui-actionsheet__menu">
           <div class="shareTitle">
             实名信息
-            <i class="weui-icon-cancel x_cg" v-tap="{methods: tap}"></i>
+            <i class="weui-icon-cancel x_cg" @click="tap"></i>
           </div>
           <div class="weui-cell">
             <div class="weui-cell__bd">
@@ -18,7 +18,7 @@
               <input class="weui-input" type="text" placeholder="请输入身份证号" v-model="number">
             </div>
           </div>
-          <div class="btn" v-tap="{methods: updateValue}">修改</div>
+          <div class="btn" @click="tap">修改</div>
           <div class="he"></div>
         </div>
       </div>
@@ -40,6 +40,7 @@
     methods: {
       // 点击隐藏弹出层
       tap() {
+        console.log('ddd')
         this.$emit('update:visible', false)
       },
       // 点击分享
