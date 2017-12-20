@@ -72,7 +72,8 @@
     "webpack-merge": "^4.1.0",
     "weixin-js-sdk": "^1.2.0",
     "weui": "^1.1.2",
-    "weui.js": "^1.1.3"
+    "weui.js": "^1.1.3",
+    "zepto": "^1.2.0"
   },
   "engines": {
     "node": ">= 4.0.0",

@@ -3,19 +3,18 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const Recommend = () => import('@/components/recommend/recommend')
-const Loading = () => import('@/components/loading/loading')
-const Join = () => import('@/components/join/join')
-const Error = () => import('@/components/error/error')
-const Turntable = () => import('@/components/turntable/turntable')
+// 个人中心页面的路由
+export const personalCenter = [
+  { path: '/turntable', name: '大转盘', component: resolve => { require(['@/components/turntable/turntable'], resolve); } },
+];
 
-export default new Router({
-  routes: [
-    {path: '/',redirect: '/turntable'},
-    {path: '/loading',component: Loading}, 
-    {path: '/turntable',component: Turntable},
-    {path: '/recommend',component: Recommend},
-    {path: '/join',component: Join},
-    {path: '/error',component: Error}
-  ]
+export const routers = [
+  { path: '/', redirect: '/turntable' },
+  ...personalCenter
+];
+
+const router = new Router({
+  routes: routers
 })
+
+export default router

@@ -1,20 +1,18 @@
 <template>
-  <div id="box" class="box">
+  <div class="bg" v-bind:style="'height:' + height + 'px;'">
     <!--大转盘 start-->
-    <RouletteWheel ref="wheel"></RouletteWheel>
+    <RouletteWheel @callback="tanchu"></RouletteWheel>
     <!--大转盘 end-->
-
     <!--弹出层 start-->
     <Login :visible.sync="visible"></Login>
     <!--弹出层 end-->
-
   </div>
 </template>
 
 <script>
   import weui from 'weui.js'
   import Login from '@/base/dialog/login.vue'
-  import RouletteWheel from '@/base/game/RouletteWheel.vue'
+  import RouletteWheel from '@/base/game/Wheel.vue'
   import {
     getJssdk
   } from '@/api/init'
@@ -27,22 +25,22 @@
     data() {
       return {
         msg: 'Welcome to Your Vue.js App',
-        visible: true
+        visible: false,
+        height: 1000
       }
     },
     methods: {
-      init(){
-        let wheelData = {
-           awards: [
-            // 转盘内的奖品个数以及内容
-            '奖品一', '奖品二', '奖品三', '奖品四', '奖品五', '奖品六'
-          ],
-          index: 6,
-          callback: function(r){
-            
-          }
-        }
-        this.$refs.wheel.init(wheelData)
+      // 动态计算背景高度
+      _bgHeight(){
+        var img = new Image()
+        img.src = require('./images/bg.png')
+        this.height = (window.screen.width / img.width) * img.height
+      },
+      init() {
+        this._bgHeight()
+      },
+      tanchu() {
+        this.visible = true
       }
     },
     mounted() {
@@ -52,6 +50,11 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style  scoped lang="stylus" rel="stylesheet/stylus">
+<style scoped lang="stylus" rel="stylesheet/stylus">
 @import '~common/stylus/variable';
+.bg
+  height 1000px
+  background-image url(./images/bg.png)
+  background-repeat no-repeat
+  background-size 100% 100%
 </style>
