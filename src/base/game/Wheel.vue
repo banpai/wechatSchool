@@ -1,5 +1,5 @@
 <template>
-	<div id="box" class="box">
+	<div id="box" class="box" v-bind:style="'height:'+ wheelLen +'px;width:' + wheelLen + 'px;'">
 		<div class="outer KinerLottery KinerLotteryContent">
 		<img src="./static/images/lanren.png"></div>
 		<!-- 大专盘分为三种状态：活动未开始（no-start）、活动进行中(start)、活动结束(completed),可通过切换class进行切换状态，js会根据这3个class进行匹配状态 -->
@@ -17,6 +17,11 @@
 		data() {
 			return {
 				wheel: {}
+			}
+		},
+		props:{
+			wheelLen: {
+				
 			}
 		},
 		methods: {

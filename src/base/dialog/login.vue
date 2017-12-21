@@ -1,27 +1,31 @@
 <template>
-  <div class="contain">
-    <div class="weui-skin_android" id="androidActionsheet" style="opacity: 1;" v-show="visible">
-      <div class="weui-mask" @click="tap"></div>
-      <div class="weui-actionsheet">
-        <div class="weui-actionsheet__menu">
-          <div class="shareTitle">
-            实名信息
-            <i class="weui-icon-cancel x_cg" @click="tap"></i>
+  <div class="contain" v-show="visible" v-bind:style="'top:' + logintop + 'px;'">
+    <div class="card">
+      <!--标题 start-->
+      <div class="title">恭喜您！</div>
+      <div class="txt">获得二等奖牛股二</div>
+      <!--标题 end-->
+      <!--输入框 start-->
+      <div class="c_input">
+        <div class="weui-flex">
+          <div class="txt c_left">姓名:</div>
+          <div class="weui-flex__item inputitem">
+            <input class="weui-input" type="text" placeholder="">
           </div>
-          <div class="weui-cell">
-            <div class="weui-cell__bd">
-              <input class="weui-input" type="text" placeholder="请输入真实姓名" v-model="name">
-            </div>
+        </div>
+        <div class="weui-flex we-tel">
+          <div class="txt c_left">电话:</div>
+          <div class="weui-flex__item inputitem">
+            <input class="weui-input" type="text" placeholder="">
           </div>
-          <div class="weui-cell input_2">
-            <div class="weui-cell__bd">
-              <input class="weui-input" type="text" placeholder="请输入身份证号" v-model="number">
-            </div>
-          </div>
-          <div class="btn" @click="tap">修改</div>
-          <div class="he"></div>
         </div>
       </div>
+      <!--输入框 end-->
+
+      <!--提交按钮 start-->
+      <div class="bottom-btn">提交</div>
+      <!--提交按钮 end-->
+
     </div>
   </div>
 </template>
@@ -35,7 +39,8 @@
       }
     },
     props: {
-      visible: Boolean
+      visible: Boolean,
+      logintop: Number
     },
     methods: {
       // 点击隐藏弹出层
@@ -62,42 +67,51 @@
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
 @import '~@/common/stylus/variable';
-.shareTitle
-  padding-top _c(44)
-  padding-left _c(30)
-  font-size $font-size-20
-  color #000000
-  text-align center
-  position relative
-  .x_cg
-    float right
-    position absolute
-    right _c(30)
-.shareMenu
-  width _c(450)
-  margin _c(35) auto
-  text-align center
-  padding-bottom _c(35)
-  .shareIcon
-    width _c(48)
-    height _c(48)
-    margin 0 auto
-    img
-      width 100%
-      height 100%
-  .shareItem
-    font-size $font-size-16
-    color #000000
-    margin-top _c(15)
-.btn
-  margin-left _c(30)
-  margin-right _c(30)
-  margin-top _c(0)
-.he
-  height _c(30)
-.weui-cell:before
-  border 0
-  height 0
-.input_2
-  padding-top _c(0)
+.contain
+  position absolute
+  top 190px
+  width 100%
+  .card
+    margin-left 18px
+    margin-right 18px
+    height cp(675)
+    background #fdc9c8
+    border-radius 50px
+    overflow hidden
+    .title
+      text-align center
+      color red
+      font-size 36px
+      line-height 36px
+      margin-top cp(54)
+    .txt
+      text-align center
+      color #7a3008
+      font-size 24px
+      line-height 24px
+      margin-top cp(42)
+    .c_input
+      padding-left cp(46)
+      padding-right cp(46)
+      margin-top cp(72)
+      .c_left
+        margin-top 0
+        line-height cp(68)
+      .inputitem
+        padding-left cp(16)
+        .weui-input
+          background #fff
+          border-radius 50px
+          height cp(68)
+      .we-tel
+        margin-top cp(58)
+  .bottom-btn
+    font-size 20px
+    margin cp(60) auto
+    width cp(234)
+    height cp(68)
+    line-height cp(68)
+    border-radius 50px
+    background #7a3207
+    color #fff
 </style>
