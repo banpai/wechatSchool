@@ -2,14 +2,23 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
+let routes = [
+  // 首页页面
+  {
+      path: '/',
+      redirect: '/denglu'
+  }
+]
 
-// 个人中心页面的路由
 export const personalCenter = [
   { path: '/turntable', name: '大转盘', component: resolve => { require(['@/components/turntable/turntable'], resolve); } },
+  { path: '/denglu', name: '登录', component: resolve => { require(['@/components/denglu/denglu'], resolve); } },
+  { path: '/zhuce', name: '注册', component: resolve => { require(['@/components/denglu/zhuce'], resolve); } },
+  { path: '/loading', name: '加载', component: resolve => { require(['@/components/loading/loading'], resolve); } }
 ];
 
 export const routers = [
-  { path: '/', redirect: '/turntable' },
+  ...routes,
   ...personalCenter
 ];
 

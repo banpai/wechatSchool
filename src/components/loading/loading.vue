@@ -30,21 +30,22 @@
     },
     methods: {
       init() {
-        isHasOpenid().then(res => {
-          console.log(res)
-          if (res.error_code === 60001) {
-            window.location.href = res.msg
-          } else if (res.error_code === 400088) {
-            if (res.openid) {
-              localStorage.setItem('openid', res.openid)
-            }
-            if (res.flag === 1) {
-              this.$router.replace('/recommend')
-            } else {
-              this.$router.replace('/join')
-            }
-          }
-        })
+        this.$router.push('/denglu')
+        // isHasOpenid().then(res => {
+        //   console.log(res)
+        //   if (res.error_code === 60001) {
+        //     window.location.href = res.msg
+        //   } else if (res.error_code === 400088) {
+        //     if (res.openid) {
+        //       localStorage.setItem('openid', res.openid)
+        //     }
+        //     if (res.flag === 1) {
+        //       this.$router.replace('/recommend')
+        //     } else {
+        //       this.$router.replace('/join')
+        //     }
+        //   }
+        // })
       }
     },
     mounted() {

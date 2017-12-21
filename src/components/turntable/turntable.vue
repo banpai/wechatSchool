@@ -1,7 +1,7 @@
 <template>
   <div class="bg" v-bind:style="'height:' + height + 'px;'">
     <!--大转盘 start-->
-    <RouletteWheel  v-bind:style="'top:' + top + 'px;'" @callback="tanchu" class="wheel" :wheelLen="wheelLen"></RouletteWheel>
+    <RouletteWheel  v-bind:style="'top:' + top + 'px;'" @callback="tanchu" @cbjs="_bgHeight" class="wheel" :wheelLen="wheelLen"></RouletteWheel>
     <!--大转盘 end-->
     <!--弹出层 start-->
     <Login :visible.sync="visible" :logintop="logintop"></Login>

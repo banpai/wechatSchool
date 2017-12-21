@@ -68,6 +68,7 @@
 						vm.$emit('callback')
 					} //抽奖结束回调
 				});
+				vm.$emit('cbjs')
 			}
 		},
 		mounted() {
