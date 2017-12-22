@@ -1,136 +1,198 @@
 <template>
   <div class="login">
-
     <!--课程选项 start-->
     <div class="options weui-flex">
       <div @click="cut(0)" :class="option === 0 ? 'classical pitchOn' : 'classical'">精品课程</div>
       <div @click="cut(1)" :class="option === 1 ? 'individual pitchOn' : 'individual'">私教课</div>
     </div>
     <!--课程选项 end-->
-
     <!--菜单 start-->
     <div class="bottomLine aboveLine weui-flex menu">
-        <div class="weui-flex__item">
-          <div class="item">
-            <span class="pullDown">购买人数</span>
-          </div>
+      <div class="weui-flex__item">
+        <div class="item">
+          <span class="pullDown">购买人数</span>
         </div>
-        <div class="weui-flex__item">
-          <div class="item">
-            <span class="pullDown">课程好评</span>
-          </div>
+      </div>
+      <div class="weui-flex__item">
+        <div class="item">
+          <span class="pullDown">课程好评</span>
         </div>
-        <div class="weui-flex__item">
-          <div class="item">
-            <span class="filtrate">筛选</span>
-          </div>
+      </div>
+      <div class="weui-flex__item" @click="filtrate">
+        <div class="item">
+          <span class="filtrate">筛选</span>
         </div>
+      </div>
     </div>
     <!--菜单 end-->
-
     <!--课程列表 start-->
-    <div class="curriculums">
-      <div class="bottomLine aboveLine table">
-        <div class="photograph">
-          <img src="./images/course.png"/>
-        </div>
-        <div class="details weui-flex">
-          <div class="weui-flex__item">
-            <div class="designation">小白学炒股</div>
-            <div class="particulars weui-flex">
-              <div class="ico">
-                <img src="./images/number.png" />
-              </div>
-              <div class="number">已有<span>2000</span>人学习</div>
-              <div class="like ico">
-                <img src="./images/like.png" />
-              </div>
-              <div class="number">3453</div>
-            </div>
+    <Scroll class="roll"  ref="scroll" :eventFlag.sync="eventFlag" :style="'height:' + scrollHeight + 'px;'"  :pullup="pulldown" @scrollToEnd="scrollToEnd">
+      <div class="curriculums">
+        <div class="bottomLine aboveLine table">
+          <div class="photograph">
+            <img src="./images/course.png" />
           </div>
-          <div class="label">免费</div>
+          <div class="details weui-flex">
+            <div class="weui-flex__item">
+              <div class="designation">小白学炒股</div>
+              <div class="particulars weui-flex">
+                <div class="ico">
+                  <img src="./images/number.png" />
+                </div>
+                <div class="number">已有<span>2000</span>人学习</div>
+                <div class="like ico">
+                  <img src="./images/like.png" />
+                </div>
+                <div class="number">3453</div>
+              </div>
+            </div>
+            <div class="label">免费</div>
+          </div>
+        </div>
+        <div class="bottomLine aboveLine table">
+          <div class="photograph">
+            <img src="./images/course.png" />
+          </div>
+          <div class="details weui-flex">
+            <div class="weui-flex__item">
+              <div class="designation">小白学炒股</div>
+              <div class="particulars weui-flex">
+                <div class="ico">
+                  <img src="./images/number.png" />
+                </div>
+                <div class="number">已有<span>2000</span>人学习</div>
+                <div class="like ico">
+                  <img src="./images/like.png" />
+                </div>
+                <div class="number">3453</div>
+              </div>
+            </div>
+            <div class="label">免费</div>
+          </div>
+        </div>
+        <div class="bottomLine aboveLine table">
+          <div class="photograph">
+            <img src="./images/course.png" />
+          </div>
+          <div class="details weui-flex">
+            <div class="weui-flex__item">
+              <div class="designation">小白学炒股</div>
+              <div class="particulars weui-flex">
+                <div class="ico">
+                  <img src="./images/number.png" />
+                </div>
+                <div class="number">已有<span>2000</span>人学习</div>
+                <div class="like ico">
+                  <img src="./images/like.png" />
+                </div>
+                <div class="number">3453</div>
+              </div>
+            </div>
+            <div class="label">免费</div>
+          </div>
+        </div>
+        <div class="bottomLine aboveLine table">
+          <div class="photograph">
+            <img src="./images/course.png" />
+          </div>
+          <div class="details weui-flex">
+            <div class="weui-flex__item">
+              <div class="designation">小白学炒股</div>
+              <div class="particulars weui-flex">
+                <div class="ico">
+                  <img src="./images/number.png" />
+                </div>
+                <div class="number">已有<span>2000</span>人学习</div>
+                <div class="like ico">
+                  <img src="./images/like.png" />
+                </div>
+                <div class="number">3453</div>
+              </div>
+            </div>
+            <div class="label">免费</div>
+          </div>
+        </div>
+        <div class="bottomLine aboveLine table">
+          <div class="photograph">
+            <img src="./images/course.png" />
+          </div>
+          <div class="details weui-flex">
+            <div class="weui-flex__item">
+              <div class="designation">小白学炒股</div>
+              <div class="particulars weui-flex">
+                <div class="ico">
+                  <img src="./images/number.png" />
+                </div>
+                <div class="number">已有<span>2000</span>人学习</div>
+                <div class="like ico">
+                  <img src="./images/like.png" />
+                </div>
+                <div class="number">3453</div>
+              </div>
+            </div>
+            <div class="label">免费</div>
+          </div>
+        </div>
+        <div class="bottomLine aboveLine table">
+          <div class="photograph">
+            <img src="./images/course.png" />
+          </div>
+          <div class="details weui-flex">
+            <div class="weui-flex__item">
+              <div class="designation">小白学炒股</div>
+              <div class="particulars weui-flex">
+                <div class="ico">
+                  <img src="./images/number.png" />
+                </div>
+                <div class="number">已有<span>2000</span>人学习</div>
+                <div class="like ico">
+                  <img src="./images/like.png" />
+                </div>
+                <div class="number">3453</div>
+              </div>
+            </div>
+            <div class="label">免费</div>
+          </div>
+        </div>
+        <div class="loading-container">
+          <Loading v-show="loadingFlag" title="正在加载"></Loading>
         </div>
       </div>
-      <div class="bottomLine aboveLine table">
-        <div class="photograph">
-          <img src="./images/course.png"/>
-        </div>
-        <div class="details weui-flex">
-          <div class="weui-flex__item">
-            <div class="designation">小白学炒股</div>
-            <div class="particulars weui-flex">
-              <div class="ico">
-                <img src="./images/number.png" />
-              </div>
-              <div class="number">已有<span>2000</span>人学习</div>
-              <div class="like ico">
-                <img src="./images/like.png" />
-              </div>
-              <div class="number">3453</div>
-            </div>
-          </div>
-          <div class="label">免费</div>
-        </div>
-      </div>
-    </div>
+    </Scroll>
     <!--课程列表 end-->
+    <!--筛选弹出层 start-->
+    <Filtrate :visible.sync="filtrateFlag" ref="filtrate" @sure="filtrateCall"></Filtrate>
+    <!--筛选弹出层 end-->
   </div>
 </template>
 
 <script>
-  function runAsync1() {
-    var p = new Promise(function(resolve, reject) {
-      //做一些异步操作
-      setTimeout(function() {
-        console.log('异步任务1执行完成');
-        resolve('随便什么数据1');
-      }, 1000);
-    });
-    return p;
-  }
-  function runAsync2() {
-    var p = new Promise(function(resolve, reject) {
-      //做一些异步操作
-      setTimeout(function() {
-        console.log('异步任务2执行完成');
-        resolve('随便什么数据2');
-      }, 2000);
-    });
-    return p;
-  }
-  function runAsync3() {
-    var p = new Promise(function(resolve, reject) {
-      //做一些异步操作
-      setTimeout(function() {
-        console.log('异步任务3执行完成');
-        resolve('随便什么数据3');
-      }, 2000);
-    });
-    return p;
-  }
-  function getNumber() {
-    var p = new Promise(function(resolve, reject) {
-      //做一些异步操作
-      setTimeout(function() {
-        var num = Math.ceil(Math.random() * 10); //生成1-10的随机数
-        num = 8
-        if (num <= 5) {
-          resolve(num);
-        } else {
-          reject('数字太大了');
-        }
-      }, 2000);
-    });
-    return p;
-  }
   import weui from 'weui.js'
+  import Scroll from '@/base/scroll/scroll'
+  import Loading from '@/base/loading/loading'
+  import Filtrate from '@/base/dialog/filtrate'
   export default {
     name: 'HelloWorld',
+    components: {
+      Scroll,
+      Loading,
+      Filtrate
+    },
     data() {
       return {
         msg: 'Welcome to Your Vue.js App',
         tel: 13151297760,
-        option: 0
+        // 切换课程标签
+        option: 0,
+        // 滚动区域的高度
+        scrollHeight: 300,
+        // 滚动事件只触发一次
+        eventFlag: true,
+        // 上拉加载开关
+        pulldown: true,
+        // 显示loading
+        loadingFlag: true,
+        filtrateFlag: false
       }
     },
     methods: {
@@ -150,49 +212,44 @@
       // 切换课程
       cut(index) {
         this.option = index
+      },
+      // 点击筛选
+      filtrate(){
+        this.$refs.filtrate.init()
+        this.filtrateFlag = true
+      },
+      // 筛选回调
+      filtrateCall(i) {
+        console.log(i)
+      },
+      // 初始化scroll的高度
+      _initScroll() {
+        let height = document.documentElement.clientHeight || document.body.clientHeight
+        console.log(height)
+        this.scrollHeight = height - 85
+      },
+      // 上拉加载
+      scrollToEnd(){
+        this.loadingFlag = true
+        console.log('dd')
+        setTimeout(()=>{
+          this.loadingFlag = false
+          this.eventFlag = true
+        }, 2000)
+        // getPostData('getPigOrderList', {}, true).then(r => {
+        //   this.list = this.list.concat(r.list)
+          
+        // })
       }
     },
     mounted() {
       document.title = "慧鲸学堂"
-      // runAsync1()
-      //   .then(function(data) {
-      //     console.log(data);
-      //     return runAsync2();
-      //   })
-      //   .then(function(data) {
-      //     console.log(data);
-      //     return '直接返回数据'; //这里直接返回数据
-      //   })
-      //   .then(function(data) {
-      //     console.log(data);
-      //   });
-      // getNumber()
-      //   .then(function(data) {
-      //     console.log('resolved');
-      //     console.log(data);
-      //   })
-      //   .catch(function(reason) {
-      //     console.log('rejected');
-      //     console.log(reason);
-      //   });
-      // getNumber()
-      //   .then(function(data) {
-      //     console.log('resolved');
-      //     console.log(data);
-      //     console.log(somedata); //此处的somedata未定义
-      //   })
-      //   .catch(function(reason) {
-      //     console.log('rejected');
-      //     console.log(reason);
-      //   });
-      Promise
-        .all([runAsync1(), runAsync2(), runAsync3()])
-        .then(function(results) {
-          console.log(results);
-        });
-      // 初始化
-      // this.init()
-      // weui.alert('alert')
+      
+      this._initScroll()
+    },
+    // 组件激活时调用
+    activated() {
+      this.$refs.scroll.reLive()
     }
   }
 </script>
@@ -251,6 +308,10 @@
           width cp(32)
           height cp(32)
           right cp(65)
+  .roll
+    height 200px
+    overflow hidden
+    background #e3e3e3
   .curriculums
     padding-top cp(20)
     background #e3e3e3
@@ -295,4 +356,6 @@
         line-height cp(62)
         color #ff0515
         font-size cp(30)
+    .loading-container
+      height cp(90)
 </style>
