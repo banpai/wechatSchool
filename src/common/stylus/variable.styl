@@ -35,3 +35,37 @@ $hui = #cdcdcd
 //fun
 cp(x)
   (x/2)px
+
+.bottomLine
+  position: relative
+  &:after
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 1px;
+    border-bottom: 1px solid #cdcdcd;
+    color: #cdcdcd;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    z-index: 2;
+
+.aboveLine
+  position: relative
+  &:before
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #cdcdcd;
+    color: #cdcdcd;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    z-index: 2;
