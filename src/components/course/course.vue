@@ -8,14 +8,14 @@
     <!--课程选项 end-->
     <!--菜单 start-->
     <div class="bottomLine aboveLine weui-flex menu">
-      <div class="weui-flex__item">
+      <div class="weui-flex__item" @click="changeDirection('groupMinNum')">
         <div class="item">
-          <span class="pullDown">购买人数</span>
+          <span :class="groupMinNum">购买人数</span>
         </div>
       </div>
-      <div class="weui-flex__item">
+      <div class="weui-flex__item" @click="changeDirection('courseHighPraise')">
         <div class="item">
-          <span class="pullDown">课程好评</span>
+          <span :class="courseHighPraise">课程好评</span>
         </div>
       </div>
       <div class="weui-flex__item" @click="filtrate">
@@ -26,7 +26,7 @@
     </div>
     <!--菜单 end-->
     <!--课程列表 start-->
-    <Scroll class="roll"  ref="scroll" :eventFlag.sync="eventFlag" :style="'height:' + scrollHeight + 'px;'"  :pullup="pulldown" @scrollToEnd="scrollToEnd">
+    <Scroll class="roll" ref="scroll" :eventFlag.sync="eventFlag" :style="'height:' + scrollHeight + 'px;'" :pullup="pulldown" @scrollToEnd="scrollToEnd">
       <div class="curriculums">
         <div class="bottomLine aboveLine table">
           <div class="photograph">
@@ -192,7 +192,13 @@
         pulldown: true,
         // 显示loading
         loadingFlag: true,
-        filtrateFlag: false
+        filtrateFlag: false,
+        // 购买人数的状态管理
+        groupMinNum: 'pullDown',
+        // 课程好评的状态管理
+        courseHighPraise: 'pullDown',
+        // 判断是否是第一次点击
+        peugeotState: false
       }
     },
     methods: {
@@ -214,13 +220,14 @@
         this.option = index
       },
       // 点击筛选
-      filtrate(){
+      filtrate() {
         this.$refs.filtrate.init()
         this.filtrateFlag = true
       },
       // 筛选回调
       filtrateCall(i) {
         console.log(i)
+        this.peugeotState = false
       },
       // 初始化scroll的高度
       _initScroll() {
@@ -229,27 +236,88 @@
         this.scrollHeight = height - 85
       },
       // 上拉加载
-      scrollToEnd(){
+      scrollToEnd() {
         this.loadingFlag = true
         console.log('dd')
-        setTimeout(()=>{
+        setTimeout(() => {
           this.loadingFlag = false
           this.eventFlag = true
         }, 2000)
         // getPostData('getPigOrderList', {}, true).then(r => {
         //   this.list = this.list.concat(r.list)
-          
         // })
+      },
+      // 统一箭头变向方法管理
+      _arrowsTurning(n) {
+        if (n === 'groupMinNum') {
+          this.courseHighPraise = 'pullDown'
+          // 点击购买人数
+          if (n === this.peugeotState) {
+            // 点击状态，箭头变
+            if (this.groupMinNum === 'pullDown-Checked') {
+              this.groupMinNum = 'pullUp-Checked'
+              return Promise.resolve('groupMinNum-pullUp-Checked')
+            } else {
+              this.groupMinNum = 'pullDown-Checked'
+              return Promise.resolve('groupMinNum-pullDown-Checked')
+            }
+          } else {
+            // 未点击状态
+            this.groupMinNum = 'pullDown-Checked'
+            this.peugeotState = 'groupMinNum'
+            return Promise.resolve('groupMinNum-pullDown-Checked')
+          }
+        } else if (n === 'courseHighPraise') {
+          this.groupMinNum = 'pullDown'
+          // 点击课程好评
+          if (n === this.peugeotState) {
+            // 点击状态，箭头变
+            if (this.courseHighPraise === 'pullDown-Checked') {
+              this.courseHighPraise = 'pullUp-Checked'
+              return Promise.resolve('courseHighPraise-pullUp-Checked')
+            } else {
+              this.courseHighPraise = 'pullDown-Checked'
+              return Promise.resolve('courseHighPraise-pullDown-Checked')
+            }
+          } else {
+            // 未点击状态
+            this.courseHighPraise = 'pullDown-Checked'
+            this.peugeotState = 'courseHighPraise'
+            return Promise.resolve('courseHighPraise-pullDown-Checked')
+          }
+        }
+      },
+      // 改变箭头状态
+      changeDirection(n) {
+        this._arrowsTurning(n)
+          .then(s => {
+            console.log(s)
+          })
+      },
+      // 初始化数据
+      _initData() {
+        this.peugeotState = false
       }
     },
     mounted() {
       document.title = "慧鲸学堂"
-      
       this._initScroll()
+      this._initData()
     },
     // 组件激活时调用
     activated() {
       this.$refs.scroll.reLive()
+    },
+    // 监听事件
+    watch: {
+      // 监听peugeotState
+      peugeotState(r) {
+        console.log(r)
+        if (!r) {
+          this.groupMinNum = 'pullDown'
+          this.courseHighPraise = 'pullDown'
+        }
+      }
     }
   }
 </script>
@@ -292,6 +360,33 @@
         &:after
           content:'';
           background-image:url(./images/pullDown.png);
+          background-size cp(32) cp(32)
+          position absolute
+          top cp(15)
+          width cp(32)
+          height cp(32)
+      .pullDown-Checked
+        &:after
+          content:'';
+          background-image:url(./images/pullDown-checked.png);
+          background-size cp(32) cp(32)
+          position absolute
+          top cp(15)
+          width cp(32)
+          height cp(32)
+      .pullUp
+        &:after
+          content:'';
+          background-image:url(./images/pullUp.png);
+          background-size cp(32) cp(32)
+          position absolute
+          top cp(15)
+          width cp(32)
+          height cp(32)
+      .pullUp-Checked
+        &:after
+          content:'';
+          background-image:url(./images/pullUp-checked.png);
           background-size cp(32) cp(32)
           position absolute
           top cp(15)

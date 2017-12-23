@@ -140,6 +140,7 @@
       reset() {
         this.classifyIndex = -1
         this.stateIndex = -1
+        this.$emit('sure', this.stateIndex)
         this.tap()
       },
       // 确定

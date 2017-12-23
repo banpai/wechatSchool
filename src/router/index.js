@@ -15,7 +15,8 @@ export const personalCenter = [
   { path: '/denglu', name: '登录', component: resolve => { require(['@/components/denglu/denglu'], resolve); } },
   { path: '/zhuce', name: '注册', component: resolve => { require(['@/components/denglu/zhuce'], resolve); } },
   { path: '/loading', name: '加载', component: resolve => { require(['@/components/loading/loading'], resolve); } },
-  { path: '/course', name: '课程', component: resolve => { require(['@/components/course/course'], resolve); } }
+  { path: '/course', name: '课程', component: resolve => { require(['@/components/course/course'], resolve); } },
+  { path: '/courseDetails', name: '课程详细', component: resolve => { require(['@/components/courseDetails/courseDetails'], resolve); } }
 ];
 
 export const routers = [
